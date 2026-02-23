@@ -1,0 +1,551 @@
+[
+  {
+    "image": "datasets\\test\\Severe\\image_246.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9998",
+    "probabilities": {
+      "Healthy": 0.0002394130133325234,
+      "Severe": 0.9997605681419373
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_247.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9974",
+    "probabilities": {
+      "Healthy": 0.00264406343922019,
+      "Severe": 0.9973559379577637
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_248.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9993",
+    "probabilities": {
+      "Healthy": 0.0007114980835467577,
+      "Severe": 0.9992884397506714
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_249.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9957",
+    "probabilities": {
+      "Healthy": 0.004349275026470423,
+      "Severe": 0.9956507086753845
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_250.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9995",
+    "probabilities": {
+      "Healthy": 0.00045356989721767604,
+      "Severe": 0.9995463490486145
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_251.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9986",
+    "probabilities": {
+      "Healthy": 0.0014443912077695131,
+      "Severe": 0.998555600643158
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_252.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9993",
+    "probabilities": {
+      "Healthy": 0.0007358459406532347,
+      "Severe": 0.9992641806602478
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_253.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9946",
+    "probabilities": {
+      "Healthy": 0.005383467301726341,
+      "Severe": 0.9946165680885315
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_254.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9998",
+    "probabilities": {
+      "Healthy": 0.00015981421165633947,
+      "Severe": 0.9998401403427124
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_255.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9991",
+    "probabilities": {
+      "Healthy": 0.0008742106729187071,
+      "Severe": 0.9991257786750793
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_256.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9998",
+    "probabilities": {
+      "Healthy": 0.00019969922141171992,
+      "Severe": 0.9998002648353577
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_257.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9989",
+    "probabilities": {
+      "Healthy": 0.0010697090765461326,
+      "Severe": 0.9989302754402161
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_258.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9989",
+    "probabilities": {
+      "Healthy": 0.0010697090765461326,
+      "Severe": 0.9989302754402161
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_259.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9990",
+    "probabilities": {
+      "Healthy": 0.0009527747752144933,
+      "Severe": 0.9990472197532654
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_260.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9995",
+    "probabilities": {
+      "Healthy": 0.00045951857464388013,
+      "Severe": 0.9995405673980713
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_261.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9995",
+    "probabilities": {
+      "Healthy": 0.0005018435185775161,
+      "Severe": 0.9994981288909912
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_262.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9996",
+    "probabilities": {
+      "Healthy": 0.00040223015821538866,
+      "Severe": 0.9995977282524109
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_263.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9984",
+    "probabilities": {
+      "Healthy": 0.0016312894877046347,
+      "Severe": 0.9983686804771423
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_264.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9986",
+    "probabilities": {
+      "Healthy": 0.0013755311956629157,
+      "Severe": 0.9986244440078735
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_265.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9996",
+    "probabilities": {
+      "Healthy": 0.00037823780439794064,
+      "Severe": 0.9996217489242554
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_266.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9990",
+    "probabilities": {
+      "Healthy": 0.0009527747752144933,
+      "Severe": 0.9990472197532654
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_267.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9420",
+    "probabilities": {
+      "Healthy": 0.058002471923828125,
+      "Severe": 0.9419975876808167
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_268.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9998",
+    "probabilities": {
+      "Healthy": 0.0002394130133325234,
+      "Severe": 0.9997605681419373
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_269.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9993",
+    "probabilities": {
+      "Healthy": 0.0007358459406532347,
+      "Severe": 0.9992641806602478
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_270.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9999",
+    "probabilities": {
+      "Healthy": 8.643285400466993e-05,
+      "Severe": 0.9999135732650757
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_271.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9955",
+    "probabilities": {
+      "Healthy": 0.004453911446034908,
+      "Severe": 0.9955461025238037
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_272.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9994",
+    "probabilities": {
+      "Healthy": 0.0006340928375720978,
+      "Severe": 0.9993658661842346
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_273.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9992",
+    "probabilities": {
+      "Healthy": 0.0008137666736729443,
+      "Severe": 0.9991862177848816
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_274.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9994",
+    "probabilities": {
+      "Healthy": 0.000607537804171443,
+      "Severe": 0.9993925094604492
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_275.png",
+    "predicted_class": "Severe",
+    "confidence": "0.5710",
+    "probabilities": {
+      "Healthy": 0.42897531390190125,
+      "Severe": 0.5710247159004211
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_276.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9976",
+    "probabilities": {
+      "Healthy": 0.0023921746760606766,
+      "Severe": 0.9976078271865845
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_277.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9991",
+    "probabilities": {
+      "Healthy": 0.0008752637659199536,
+      "Severe": 0.9991247057914734
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_278.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9992",
+    "probabilities": {
+      "Healthy": 0.0008152754744514823,
+      "Severe": 0.9991846680641174
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_279.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9984",
+    "probabilities": {
+      "Healthy": 0.001647895434871316,
+      "Severe": 0.9983521699905396
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_280.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9951",
+    "probabilities": {
+      "Healthy": 0.004885961767286062,
+      "Severe": 0.9951139688491821
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_281.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9974",
+    "probabilities": {
+      "Healthy": 0.00264406343922019,
+      "Severe": 0.9973559379577637
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_282.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9942",
+    "probabilities": {
+      "Healthy": 0.005755395628511906,
+      "Severe": 0.9942446351051331
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_283.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9995",
+    "probabilities": {
+      "Healthy": 0.0005369180580601096,
+      "Severe": 0.9994631409645081
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_284.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9988",
+    "probabilities": {
+      "Healthy": 0.001152871293015778,
+      "Severe": 0.9988471269607544
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_285.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9997",
+    "probabilities": {
+      "Healthy": 0.00028324476443231106,
+      "Severe": 0.9997166991233826
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_286.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9990",
+    "probabilities": {
+      "Healthy": 0.0009703716496005654,
+      "Severe": 0.9990296363830566
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_287.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9987",
+    "probabilities": {
+      "Healthy": 0.0013020605547353625,
+      "Severe": 0.9986978769302368
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_288.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9967",
+    "probabilities": {
+      "Healthy": 0.003335860325023532,
+      "Severe": 0.9966641068458557
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_289.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9994",
+    "probabilities": {
+      "Healthy": 0.000607537804171443,
+      "Severe": 0.9993925094604492
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_290.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9991",
+    "probabilities": {
+      "Healthy": 0.0009082637843675911,
+      "Severe": 0.9990917444229126
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_291.png",
+    "predicted_class": "Healthy",
+    "confidence": "0.9482",
+    "probabilities": {
+      "Healthy": 0.9482181072235107,
+      "Severe": 0.05178181082010269
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_292.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9993",
+    "probabilities": {
+      "Healthy": 0.0006989752873778343,
+      "Severe": 0.9993009567260742
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_293.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9946",
+    "probabilities": {
+      "Healthy": 0.0054173823446035385,
+      "Severe": 0.9945825934410095
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_294.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9978",
+    "probabilities": {
+      "Healthy": 0.0021605980582535267,
+      "Severe": 0.9978393316268921
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_295.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9995",
+    "probabilities": {
+      "Healthy": 0.0005468854797072709,
+      "Severe": 0.9994531273841858
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_296.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9787",
+    "probabilities": {
+      "Healthy": 0.021266726776957512,
+      "Severe": 0.978733241558075
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_297.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9996",
+    "probabilities": {
+      "Healthy": 0.00043961405754089355,
+      "Severe": 0.9995604157447815
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_298.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9998",
+    "probabilities": {
+      "Healthy": 0.0002394130133325234,
+      "Severe": 0.9997605681419373
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_299.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9996",
+    "probabilities": {
+      "Healthy": 0.00040223015821538866,
+      "Severe": 0.9995977282524109
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_300.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9987",
+    "probabilities": {
+      "Healthy": 0.0013020605547353625,
+      "Severe": 0.9986978769302368
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_301.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9765",
+    "probabilities": {
+      "Healthy": 0.023543551564216614,
+      "Severe": 0.9764564037322998
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_302.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9984",
+    "probabilities": {
+      "Healthy": 0.00157158134970814,
+      "Severe": 0.998428463935852
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_303.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9993",
+    "probabilities": {
+      "Healthy": 0.0007293614908121526,
+      "Severe": 0.9992706179618835
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_304.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9994",
+    "probabilities": {
+      "Healthy": 0.000607537804171443,
+      "Severe": 0.9993925094604492
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_305.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9984",
+    "probabilities": {
+      "Healthy": 0.0015926540363579988,
+      "Severe": 0.9984074234962463
+    }
+  },
+  {
+    "image": "datasets\\test\\Severe\\image_306.png",
+    "predicted_class": "Severe",
+    "confidence": "0.9984",
+    "probabilities": {
+      "Healthy": 0.0015502511523663998,
+      "Severe": 0.9984496831893921
+    }
+  }
+]
