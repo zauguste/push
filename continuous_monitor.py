@@ -133,7 +133,7 @@ class ContinuousHealthMonitor:
         health_score = healthy_prob * 100
         alert_triggered, alert_msg = self.tracker.check_alert_threshold(
             health_score,
-            threshold_percent=15.0
+            threshold_percent=10.0
         )
         
         result = {
@@ -192,7 +192,7 @@ class ContinuousHealthMonitor:
         )
 
         health_score = healthy_prob * 100
-        alert_triggered, alert_msg = self.tracker.check_alert_threshold(health_score, threshold_percent=15.0)
+        alert_triggered, alert_msg = self.tracker.check_alert_threshold(health_score, threshold_percent=10.0)
 
         result = {
             'image': image_label,
@@ -301,28 +301,65 @@ class ContinuousHealthMonitor:
                        frame_save_dir: Optional[str] = None):
         """
         Monitor a camera feed, analyze frames at the given interval.
+        Continuously captures eye images and tracks health changes.
         """
-        if save_frames and frame_save_dir:
-            os.makedirs(frame_save_dir, exist_ok=True)
-
+        print(f"🔍 Initializing camera access (index={camera_index})...")
+        
+        # Try to open camera with better error handling
         cap = cv2.VideoCapture(camera_index)
         if not cap.isOpened():
-            raise RuntimeError(f"Cannot open camera index {camera_index}")
+            # Try alternative camera indices
+            for alt_index in range(5):
+                if alt_index == camera_index:
+                    continue
+                print(f"Trying alternative camera index {alt_index}...")
+                cap = cv2.VideoCapture(alt_index)
+                if cap.isOpened():
+                    camera_index = alt_index
+                    print(f"✅ Successfully opened camera {alt_index}")
+                    break
+            else:
+                raise RuntimeError(f"Cannot open any camera. Please check camera permissions and connections.")
+        
+        # Test camera by reading a frame
+        ret, test_frame = cap.read()
+        if not ret or test_frame is None:
+            cap.release()
+            raise RuntimeError("Camera opened but cannot read frames. Check camera functionality.")
+        
+        print(f"✅ Camera access granted. Resolution: {test_frame.shape[1]}x{test_frame.shape[0]}")
+        
+        if save_frames and frame_save_dir:
+            os.makedirs(frame_save_dir, exist_ok=True)
+            print(f"📁 Frames will be saved to: {frame_save_dir}")
 
-        print(f"🔴 Starting camera monitoring (index={camera_index})")
-        print(f"Interval between frames: {interval_seconds} seconds")
-        print("Press Ctrl+C to stop\n")
+        print(f"🔴 Starting continuous eye health monitoring via camera")
+        print(f"Interval between analyses: {interval_seconds} seconds")
+        print("Position your eye in front of the camera for monitoring")
+        print("Press Ctrl+C to stop monitoring\n")
 
         iteration = 0
+        consecutive_failures = 0
+        max_consecutive_failures = 5
+        
         try:
             while max_iterations is None or iteration < max_iterations:
                 iteration += 1
+                timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                print(f"[{timestamp}] Camera capture #{iteration}")
+                
                 ret, frame = cap.read()
-                if not ret:
-                    print("⚠️  Failed to read frame from camera")
+                if not ret or frame is None:
+                    consecutive_failures += 1
+                    print(f"⚠️  Failed to capture frame (failure {consecutive_failures}/{max_consecutive_failures})")
+                    if consecutive_failures >= max_consecutive_failures:
+                        print("❌ Too many consecutive capture failures. Stopping monitoring.")
+                        break
                     time.sleep(interval_seconds)
                     continue
-
+                
+                consecutive_failures = 0  # Reset on success
+                
                 # Convert BGR to RGB and to PIL Image
                 frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
                 pil_img = Image.fromarray(frame_rgb)
@@ -335,19 +372,24 @@ class ContinuousHealthMonitor:
                 else:
                     image_label = label
 
-                print(f"📸 Camera frame captured: {image_label}")
-                result = self.analyze_pil_image(pil_img, image_label=image_label, notes="camera_capture")
+                print(f"📸 Analyzing eye image from camera...")
+                result = self.analyze_pil_image(pil_img, image_label=image_label, notes="continuous_camera_monitoring")
                 self._display_result(result)
                 if result['alert_triggered']:
                     print(f"\n🚨 {result['alert_message']}\n")
-
+                
+                # Wait for next capture
                 if max_iterations is None or iteration < max_iterations:
                     time.sleep(interval_seconds)
 
         except KeyboardInterrupt:
             print("\n⏹️  Camera monitoring stopped by user")
+        except Exception as e:
+            print(f"\n❌ Error during camera monitoring: {e}")
         finally:
             cap.release()
+            print("📷 Camera released")
+            self._print_final_report()
             self._print_final_report()
     
     def _display_result(self, result: dict):

@@ -59,9 +59,28 @@ python continuous_monitor.py watch --directory path/to/images/ --iterations 10 -
 # Output:
 # - Repeatedly scans for new images
 # - Tracks health trends
-# - ALERTS on 15% drop in eye health
+# - ALERTS on 10% drop in eye health
 # - Saves comprehensive report on exit
 # - Press Ctrl+C to stop
+
+
+# MODE D: Camera Monitoring (Real-time eye tracking)
+# ───────────────────────────────────────────────────────────────────────────
+# Monitor your eye health directly from your camera feed
+python continuous_monitor.py camera --interval 10
+
+# Save captured frames for later review
+python continuous_monitor.py camera --save-frames --frame-save-dir ./my_eye_images/
+
+# Monitor for a limited time (e.g., 50 captures)
+python continuous_monitor.py camera --iterations 50 --interval 30
+
+# Output:
+# - Continuously captures eye images from camera
+# - Analyzes each frame for cataract detection
+# - Tracks health score changes over time
+# - ALERTS when health drops 10% from baseline
+# - Saves comprehensive monitoring report
 
 
 # ============================================================================
@@ -95,8 +114,8 @@ python health_dashboard.py report --output my_detailed_report.txt
 
 # Alert Threshold:
 # ───────────────────────────────────────────────────────────────────────────
-# System alerts when health drops 15% from baseline
-# Example: Peak=85 → Current=72 (15% drop = 13 points) → ALERT!
+# System alerts when health drops 10% from baseline
+# Example: Peak=85 → Current=76.5 (10% drop = 8.5 points) → ALERT!
 
 
 # ============================================================================
@@ -251,9 +270,14 @@ python train.py --epochs 20 --test-dir datasets/test
 # A: Delete eye_health_history.json (backup first!)
 #    Or programmatically: tracker = HealthTracker(); tracker.clear_history()
 
-# Q: Alert not triggering?
-# A: Need at least 2 measurements. Peak score must drop 15% from baseline.
-#    Check threshold logic in health_tracker.py check_alert_threshold()
+# Q: Camera not working?
+# A: Ensure camera permissions are granted. Try different camera indices (0, 1, 2...)
+#    python continuous_monitor.py camera --camera-index 1
+#    Close other camera-using applications first.
+
+# Q: Getting "Cannot open camera" error?
+# A: Check camera connections and drivers. Try restarting the computer.
+#    On Windows, ensure camera privacy settings allow access.
 
 
 # ============================================================================
@@ -269,16 +293,19 @@ print("""
 2. Analyze batch directory:
    python continuous_monitor.py directory --directory ./images/
 
-3. Continuous monitoring (every 5 min, 10 times):
+3. Continuous directory monitoring (every 5 min, 10 times):
    python continuous_monitor.py watch --directory ./images/ --iterations 10
 
-4. View health dashboard:
+4. Real-time camera monitoring (every 10 seconds):
+   python continuous_monitor.py camera --interval 10
+
+5. View health dashboard:
    python health_dashboard.py dashboard
 
-5. Plot health trend:
+6. Plot health trend:
    python health_dashboard.py plot
 
-6. Export report:
+7. Export report:
    python health_dashboard.py report
 
 📧 Questions? Check health_tracker.py and continuous_monitor.py docstrings

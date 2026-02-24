@@ -55,8 +55,8 @@ Range: 0-100 (100 = perfectly healthy, 0 = severely affected)
 ```
 
 ### 2. Alert System
-- Monitors for **15% drop** in health score from peak
-- Example: Peak 90 → Current 76 = 14pt drop (15.6%) = **ALERT**
+- Monitors for **10% drop** in health score from peak
+- Example: Peak 90 → Current 81 = 9pt drop (10%) = **ALERT**
 - Provides actionable medical recommendations
 
 ### 3. Three Monitoring Modes
@@ -79,10 +79,11 @@ python continuous_monitor.py watch --directory ./daily_images/ --interval 300
 # Checks every 5 minutes, runs until Ctrl+C
 ```
 
-### 4. Multiple Visualization Outputs
-- Text dashboard with ASCII charts
-- PNG plots (requires matplotlib)
-- JSON exports (data interchange)
+**Mode D: Camera (Real-time eye monitoring)**  
+```python
+python continuous_monitor.py camera --interval 10
+# Captures from camera every 10 seconds, analyzes eye health continuously
+```
 - Text reports (archiving)
 
 ### 5. Data Persistence
@@ -155,7 +156,7 @@ python continuous_monitor.py watch --directory ./daily_images/ --interval 300
    │
 5. Check alerts
    - Compare to previous peak
-   - If > 15% drop → TRIGGER ALERT
+   - If > 10% drop → TRIGGER ALERT
    │
 6. Display results
    - Show health score

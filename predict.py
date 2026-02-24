@@ -170,7 +170,7 @@ def main():
             # Check for alerts
             alert, msg = tracker.check_alert_threshold(
                 measurement['health_score'],
-                threshold_percent=15.0
+                threshold_percent=10.0
             )
             
             if alert:

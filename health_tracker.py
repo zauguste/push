@@ -143,7 +143,7 @@ class HealthTracker:
     def check_alert_threshold(
         self,
         health_score: float,
-        threshold_percent: float = 15.0
+        threshold_percent: float = 10.0
     ) -> Tuple[bool, Optional[str]]:
         """
         Check if health has dropped by threshold percent.
