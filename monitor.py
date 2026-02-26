@@ -315,56 +315,27 @@ class ContinuousHealthMonitor:
         """
         print(f"🔍 Initializing camera access (index={camera_index})...")
         
-        # Helper to attempt opening using different backends
-        def try_open(index, backend=None):
-            if backend is not None:
-                return cv2.VideoCapture(index, backend)
-            return cv2.VideoCapture(index)
-        
-        cap = try_open(camera_index)
+        # Try to open camera with better error handling
+        cap = cv2.VideoCapture(camera_index)
         if not cap.isOpened():
-            # try common backends explicitly
-            backends = [cv2.CAP_DSHOW, cv2.CAP_MSMF, cv2.CAP_VFW, cv2.CAP_FFMPEG]
-            for b in backends:
-                cap = try_open(camera_index, backend=b)
-                if cap.isOpened():
-                    print(f"✅ Opened camera {camera_index} using backend {b}")
-                    break
-        
-        if not cap.isOpened():
-            # Try alternative indices with same backend fallback logic
+            # Try alternative camera indices
             for alt_index in range(5):
                 if alt_index == camera_index:
                     continue
                 print(f"Trying alternative camera index {alt_index}...")
-                cap = try_open(alt_index)
-                if not cap.isOpened():
-                    for b in backends:
-                        cap = try_open(alt_index, backend=b)
-                        if cap.isOpened():
-                            print(f"✅ Opened camera {alt_index} using backend {b}")
-                            camera_index = alt_index
-                            break
-                else:
+                cap = cv2.VideoCapture(alt_index)
+                if cap.isOpened():
                     camera_index = alt_index
                     print(f"✅ Successfully opened camera {alt_index}")
                     break
             else:
-                raise RuntimeError(
-                    "Cannot open any camera. "
-                    "Verify hardware, drivers, and that Windows privacy settings allow "
-                    "access for desktop applications (Python)."
-                )
+                raise RuntimeError(f"Cannot open any camera. Please check camera permissions and connections.")
         
         # Test camera by reading a frame
         ret, test_frame = cap.read()
         if not ret or test_frame is None:
             cap.release()
-            raise RuntimeError(
-                "Camera opened but cannot read frames. "
-                "This usually indicates a driver/privacy issue; try running the Windows "
-                "Camera app first or check settings." 
-            )
+            raise RuntimeError("Camera opened but cannot read frames. Check camera functionality.")
         
         print(f"✅ Camera access granted. Resolution: {test_frame.shape[1]}x{test_frame.shape[0]}")
         
@@ -417,14 +388,12 @@ class ContinuousHealthMonitor:
                 if result['alert_triggered']:
                     print(f"\n🚨 {result['alert_message']}\n")
 
-                # if display is enabled, overlay and show the frame
                 if display:
                     text = f"{result['predicted_class']} ({result['confidence']:.1%})"
                     cv2.putText(frame, text, (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1.0, (0,255,0), 2)
                     health_txt = f"Score:{result['health_score']:.1f}"
                     cv2.putText(frame, health_txt, (10, 60), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255,255,0), 2)
                     cv2.imshow('Eye Monitor', frame)
-                    # allow user to press 'q' to quit early
                     if cv2.waitKey(1) & 0xFF == ord('q'):
                         print("\n🛑 Exiting display as 'q' pressed")
                         raise KeyboardInterrupt

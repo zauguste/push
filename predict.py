@@ -114,6 +114,7 @@ def main():
     parser.add_argument("--track-health", action="store_true", help="Track health history")
     parser.add_argument("--tracking-file", default="eye_health_history.json", help="Health history file")
     parser.add_argument("--notes", default="", help="Notes for this measurement")
+    parser.add_argument("--camera", action="store_true", help="Run live camera feed (overrides --image)")
     
     args = parser.parse_args()
     
@@ -127,6 +128,61 @@ def main():
     if args.track_health and HEALTH_TRACKING_AVAILABLE:
         tracker = HealthTracker(args.tracking_file)
         print(f"📊 Health tracking enabled\n")
+    
+    # if camera mode was requested, ignore image path and open webcam
+    if args.camera:
+        if not HEALTH_TRACKING_AVAILABLE and not tracker:
+            tracker = HealthTracker(args.tracking_file)
+        print("🔍 Starting camera mode. Press 'q' window to quit.")
+        cap = cv2.VideoCapture(0)
+        if not cap.isOpened():
+            raise RuntimeError("Cannot open camera")
+        transform = transforms.Compose([
+            transforms.Resize((224, 224)),
+            transforms.ToTensor(),
+            transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+        ])
+        try:
+            while True:
+                ret, frame = cap.read()
+                if not ret:
+                    break
+                pil = Image.fromarray(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
+                img_tensor = transform(pil).unsqueeze(0).to(args.device)
+                with torch.no_grad():
+                    logits = model(img_tensor)
+                    probs = torch.softmax(logits, dim=1)
+                    pred_idx = probs.argmax(dim=1).item()
+                    confidence = probs[0, pred_idx].item()
+                pred_class = class_mapping.get(pred_idx, f"Class {pred_idx}")
+                healthy_prob = float(probs[0, 0].item())
+                severe_prob = float(probs[0, 1].item()) if probs.shape[1] > 1 else 0.0
+                health_score = healthy_prob * 100
+                if tracker:
+                    tracker.record_measurement(
+                        image_path="camera",
+                        healthy_prob=healthy_prob,
+                        severe_prob=severe_prob,
+                        predicted_class=pred_class,
+                        confidence=confidence,
+                        notes="camera_mode"
+                    )
+                text = f"{pred_class} {confidence:.2%}"
+                cv2.putText(frame, text, (10,30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,255,0), 2)
+                cv2.putText(frame, f"Score:{health_score:.1f}", (10,60), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255,255,0), 2)
+                cv2.imshow('Camera', frame)
+                if cv2.waitKey(1) & 0xFF == ord('q'):
+                    break
+        except KeyboardInterrupt:
+            pass
+        finally:
+            cap.release()
+            cv2.destroyAllWindows()
+            print('Camera session ended')
+            if tracker:
+                stats = tracker.get_statistics()
+                print(f"Total measurements: {stats.get('total_measurements')}")
+        sys.exit(0)
     
     # Predict
     image_path = Path(args.image)
